@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chris Moore, 1940–2021 — the first voice on Radio Caroline</title>
+<meta name="description" content="A tribute to Chris Moore, co-founder of Radio Caroline and the first voice heard on British offshore radio, and a place to share your memories of him.">
+
+<!--
+  ============================================================
+  CHRIS MOORE TRIBUTE PAGE — how to finish it
+  ============================================================
+
+  1. PHOTOS
+     Every photo slot points at a file inside an "images" folder that sits
+     next to this HTML file. Create that folder and drop the pictures in
+     using exactly these names (or edit the src="" attributes):
+
+       images/chris-moore-portrait.jpg   (hero, full width)
+       images/mv-fredericia.jpg          (full width)
+       images/caroline-studio.jpg        (half width)
+       images/chris-moore-1964.jpg       (half width)
+       images/barcote.jpg                (full width)
+       images/carswell-bay.jpg           (half width)
+       images/chris-later-years.jpg      (half width)
+
+     Until a file exists, the slot shows a labelled placeholder telling you
+     which file it wants. Nothing breaks.
+
+     Good places to ask for scans and permission:
+       The Pirate Radio Hall of Fame — https://www.offshoreradio.co.uk/list83a.htm
+       Offshore Echos — https://www.offshoreechos.com/
+     Please get permission before publishing anyone else's photograph, and
+     put the credit in the <span class="credit"> at the end of each caption.
+
+  2. THE "SHARE A STORY" FORM
+     Stories typed into the modal appear on the page immediately, but only
+     on that visitor's screen, and only until they reload. A plain HTML page
+     has nowhere to store them permanently.
+
+     "Send it to us" opens the visitor's email app with the story ready to
+     go. Change the address here and in the footer:
+-->
+<meta name="tribute-inbox" content="stories@example.com">
+<!--
+     To collect stories automatically instead, sign up for a free form
+     service (Formspree, Netlify Forms, Google Forms) and search this file
+     for "FORM ENDPOINT" — there's a commented-out block showing where to
+     put your endpoint URL.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --fog:#dce0d9;
+  --paper:#eff1ec;
+  --ink:#131c1e;
+  --sea:#0f2a31;
+  --dial:#b4372c;
+  --brass:#8f7434;
+  --mute:#4c5957;
+  --rule:rgba(19,28,30,.18);
+
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+
+  --measure:34rem;
+  --gutter:clamp(1.25rem,5vw,4rem);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--fog);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,.96rem + .25vw,1.125rem);
+  line-height:1.6;
+  font-variant-numeric:oldstyle-nums;
+}
+img{max-width:100%;display:block}
+a{color:var(--ink);text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:var(--dial)}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--dial);outline-offset:3px}
+
+.wrap{max-width:76rem;margin:0 auto;padding-inline:var(--gutter)}
+.col{max-width:var(--measure)}
+p{margin:0 0 1.1em}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0}
+
+/* ---------- tuning dial ---------- */
+.dial{
+  position:relative;
+  height:74px;
+  border-bottom:1px solid var(--rule);
+  overflow:hidden;
+  background:
+    linear-gradient(to bottom,rgba(255,255,255,.5),transparent 60%);
+}
+.dial__ticks{
+  position:absolute;inset:auto 0 0 0;height:26px;
+  background-image:
+    repeating-linear-gradient(to right,var(--rule) 0 1px,transparent 1px 20px),
+    repeating-linear-gradient(to right,rgba(19,28,30,.45) 0 1px,transparent 1px 100px);
+  background-size:100% 10px,100% 20px;
+  background-position:bottom left;
+  background-repeat:repeat-x;
+}
+.dial__marks{
+  position:absolute;inset:0;
+  font-family:var(--body);font-size:.7rem;letter-spacing:.06em;color:var(--mute);
+}
+.dial__mark{position:absolute;bottom:30px;transform:translateX(-50%)}
+.dial__pointer{
+  position:absolute;top:0;bottom:0;left:62%;width:2px;background:var(--dial);
+  box-shadow:0 0 0 4px rgba(180,55,44,.12);
+}
+.dial__pointer span{
+  position:absolute;top:9px;left:9px;white-space:nowrap;
+  font-family:var(--display);font-size:.95rem;color:var(--dial);
+}
+@media (prefers-reduced-motion:no-preference){
+  .dial__pointer{animation:tune 1.6s cubic-bezier(.2,.9,.2,1) both}
+  @keyframes tune{from{left:8%;opacity:0}60%{opacity:1}to{left:62%;opacity:1}}
+}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(3rem,9vw,7rem) 0 clamp(2rem,5vw,3.5rem)}
+.hero blockquote{
+  margin:0;
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(2.1rem,1rem + 6.4vw,5.4rem);
+  line-height:1.02;
+  letter-spacing:-.015em;
+  max-width:17ch;
+  text-wrap:balance;
+}
+.hero blockquote em{font-style:italic;color:var(--dial)}
+.hero__attrib{
+  margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--rule);
+  max-width:26rem;color:var(--mute);font-size:.9rem;line-height:1.5;
+}
+.nameplate{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.1rem;
+  margin-top:clamp(2.5rem,6vw,4rem);
+}
+.nameplate h1{font-size:clamp(1.7rem,1.1rem + 2.4vw,2.6rem)}
+.nameplate .years{font-family:var(--body);font-size:1rem;color:var(--mute)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;font:inherit;font-weight:500;
+  padding:.72em 1.35em;border:1px solid var(--ink);border-radius:2px;
+  background:var(--ink);color:var(--fog);cursor:pointer;text-decoration:none;
+  transition:background .15s,color .15s;
+}
+.btn:hover{background:var(--dial);border-color:var(--dial);color:#fff}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);border-color:var(--ink);color:var(--fog)}
+
+/* ---------- photo slots ---------- */
+.shot{margin:clamp(2.5rem,6vw,4.5rem) 0}
+.shot .frame{background:rgba(15,42,49,.06);border:1px solid var(--rule)}
+.shot img{width:100%;height:auto}
+.shot .slot{display:none}
+.shot.is-empty .frame{
+  display:grid;place-content:center;gap:.5rem;text-align:center;
+  aspect-ratio:var(--ratio,16/7);padding:1.5rem;
+  background-image:repeating-linear-gradient(-45deg,rgba(15,42,49,.05) 0 12px,transparent 12px 24px);
+}
+.shot.is-empty .slot{display:block;color:var(--mute);font-size:.82rem;line-height:1.5}
+.shot.is-empty .slot b{display:block;font-weight:500;color:var(--ink);font-size:.95rem;margin-bottom:.35rem}
+.shot.is-empty .slot code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem}
+.shot figcaption{
+  margin-top:.7rem;max-width:44ch;color:var(--mute);font-size:.85rem;line-height:1.5;
+}
+.credit{display:block;margin-top:.2rem;opacity:.75}
+.shot--half{--ratio:4/5}
+.pair{display:grid;gap:clamp(1rem,3vw,2rem)}
+@media (min-width:46rem){.pair{grid-template-columns:1fr 1fr;align-items:start}.pair .shot{margin:0}}
+
+/* ---------- sections ---------- */
+.band{padding:clamp(3rem,8vw,6rem) 0}
+.band--sea{background:var(--sea);color:#dfe5e3}
+.band--sea h2,.band--sea h3{color:#fff}
+.band--sea a{color:#fff;text-decoration-color:#e8a33d}
+.band--sea .btn{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
+.band--sea .btn:hover{background:#fff;color:var(--sea);border-color:#fff}
+
+h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem);margin-bottom:1.2rem;max-width:20ch}
+
+/* ---------- life, as a run down the dial ---------- */
+.life{border-top:1px solid var(--rule)}
+.entry{
+  display:grid;gap:.2rem 2.5rem;
+  padding:clamp(1.8rem,4vw,2.8rem) 0;border-bottom:1px solid var(--rule);
+}
+@media (min-width:52rem){
+  .entry{grid-template-columns:8rem minmax(0,var(--measure));}
+}
+.entry__year{
+  font-family:var(--display);font-size:1.05rem;color:var(--dial);
+  padding-top:.25rem;letter-spacing:.01em;
+}
+.entry h3{font-size:1.25rem;margin-bottom:.55rem}
+.entry p:last-child{margin-bottom:0}
+.aside{
+  margin-top:1.2rem;padding-left:1rem;border-left:2px solid var(--brass);
+  font-size:.88rem;color:var(--mute);
+}
+.aside p:last-child{margin-bottom:0}
+
+/* ---------- listen ---------- */
+.listen ul{list-style:none;margin:0;padding:0;max-width:var(--measure)}
+.listen li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.listen li:first-child{border-top:1px solid rgba(255,255,255,.16)}
+.listen .note{display:block;font-size:.85rem;opacity:.75;margin-top:.15rem}
+
+/* ---------- stories ---------- */
+.stories__head{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-end;justify-content:space-between;margin-bottom:2rem}
+.stories__head p{max-width:44ch;margin:0;color:var(--mute)}
+.wall{display:grid;gap:1.25rem}
+@media (min-width:52rem){.wall{grid-template-columns:1fr 1fr}}
+.story{
+  background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--dial);
+  padding:1.4rem 1.5rem;
+}
+.story h3{font-size:1.05rem;margin-bottom:.15rem}
+.story .who{font-size:.82rem;color:var(--mute);margin-bottom:.8rem}
+.story p{margin:0;white-space:pre-wrap}
+.wall__empty{
+  grid-column:1/-1;padding:clamp(2rem,6vw,3.5rem);text-align:center;
+  border:1px dashed var(--rule);color:var(--mute);
+}
+.wall__empty p{margin:0 auto 1.2rem;max-width:34ch}
+
+/* ---------- modal ---------- */
+.modal[hidden]{display:none}
+.modal{
+  position:fixed;inset:0;z-index:50;display:grid;place-items:center;
+  padding:clamp(0rem,3vw,2rem);background:rgba(15,42,49,.55);
+}
+.modal__panel{
+  background:var(--paper);width:min(38rem,100%);max-height:100dvh;overflow:auto;
+  border:1px solid var(--ink);padding:clamp(1.5rem,4vw,2.5rem);
+}
+@media (max-width:34rem){.modal__panel{min-height:100dvh;border:0}}
+.modal__panel h2{margin-bottom:.5rem}
+.modal__intro{color:var(--mute);font-size:.9rem;max-width:42ch}
+.field{margin-top:1.2rem}
+.field label{display:block;font-size:.85rem;font-weight:500;margin-bottom:.35rem}
+.field .hint{font-weight:400;color:var(--mute)}
+.field input,.field textarea{
+  width:100%;font:inherit;font-size:1rem;color:var(--ink);
+  background:#fff;border:1px solid var(--rule);border-radius:2px;padding:.7em .8em;
+}
+.field textarea{min-height:9rem;resize:vertical;line-height:1.55}
+.field input:focus,.field textarea:focus{border-color:var(--ink);outline:2px solid var(--dial);outline-offset:1px}
+.error{color:var(--dial);font-size:.85rem;margin-top:.4rem}
+.error[hidden]{display:none}
+.modal__actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.8rem}
+.modal__actions .btn{flex:1 1 auto}
+.modal__close{
+  float:right;margin:-.4rem -.4rem 0 1rem;background:none;border:0;padding:.4rem;
+  font:inherit;font-size:1.4rem;line-height:1;color:var(--mute);cursor:pointer;
+}
+.modal__close:hover{color:var(--dial)}
+.modal__foot{margin-top:1.4rem;font-size:.8rem;color:var(--mute);line-height:1.5}
+
+/* ---------- footer ---------- */
+footer{padding:clamp(3rem,7vw,5rem) 0;border-top:1px solid var(--rule);font-size:.87rem;color:var(--mute)}
+footer h2{font-size:1.1rem;color:var(--ink);margin-bottom:.9rem}
+footer ul{list-style:none;margin:0 0 2rem;padding:0;max-width:var(--measure)}
+footer li{margin-bottom:.5rem}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:.5rem;position:absolute;z-index:99;background:var(--ink);color:var(--fog);padding:.6em 1em}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#story-wall">Skip to the stories</a>
+
+<div class="dial" aria-hidden="true">
+  <div class="dial__ticks"></div>
+  <div class="dial__marks">
+    <span class="dial__mark" style="left:14%">150</span>
+    <span class="dial__mark" style="left:38%">175</span>
+    <span class="dial__mark" style="left:86%">250</span>
+  </div>
+  <div class="dial__pointer"><span>199</span></div>
+</div>
+
+<header class="hero wrap">
+  <blockquote>This is Radio Caroline on 199, <em>your all-day music station.</em></blockquote>
+  <p class="hero__attrib">The first words broadcast from a ship anchored off the Essex coast at noon on Easter Saturday, 28 March 1964 — and the moment British radio stopped belonging to the BBC alone.</p>
+
+  <div class="nameplate">
+    <h1>Chris Moore</h1>
+    <span class="years">16 April 1940 – 2 January 2021</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <figure class="shot shot--full">
+    <div class="frame">
+      <img src="images/chris-moore-portrait.jpg" alt="Chris Moore" onerror="slotEmpty(this)">
+      <span class="slot"><b>Photograph goes here</b>Save it as <code>images/chris-moore-portrait.jpg</code></span>
+    </div>
+    <figcaption>Chris Moore, photographed in the Radio Caroline years.<span class="credit">Photo credit: add here</span></figcaption>
+  </figure>
+</div>
+
+<section class="wrap band" style="padding-top:0">
+  <div class="col">
+    <p style="font-size:1.15em">He was six foot six with a bass voice that filled a room, and for a few years in the middle of the 1960s he was at the centre of the most disruptive thing to happen to British broadcasting in a generation. Chris Moore helped start Radio Caroline, found the ship it sailed on, hired the disc jockeys who became household names, and then quietly stepped away from all of it.</p>
+    <p>He spent the next fifty years painting, taking photographs, living in rooms he cheerfully described as basic, and swimming off a Welsh cliff every summer. This page is for anyone who knew him, worked with him, or grew up with a transistor radio under the bedclothes tuned to 199 metres.</p>
+    <p><a class="btn" href="#share" data-open-modal>Share a memory of Chris</a></p>
+  </div>
+</section>
+
+<div class="wrap life">
+
+  <article class="entry">
+    <div class="entry__year">1940</div>
+    <div>
+      <h3>An American childhood, mostly unrecorded</h3>
+      <p>Chris was born on 16 April 1940 and brought to England at the age of eight by his American mother. She married an Englishman, and the family lived in a large Knightsbridge flat; Chris was sent off to boarding school. Friends later recalled him dropping tantalising hints about his parents' circle — names from the world of 1950s diplomacy and espionage — without ever filling in much detail. Technically he remained an American all his life.</p>
+      <div class="aside">
+        <p>Radio Caroline's 1964 press office said he was born in Washington DC, and that is the version most obituaries carried. Later research by Mervyn Hagger, cited by the Pirate Radio Hall of Fame, points to California instead.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="entry">
+    <div class="entry__year">Early 60s</div>
+    <div>
+      <h3>The Crazy Elephant</h3>
+      <p>Before radio there was the Merchant Navy, where he worked as a steward — useful experience, as it turned out — and a spell in advertising. Then he started spinning records at the Crazy Elephant, a club on Curzon Street part-owned by the James Bond co-producer Benny Fisz and permanently full of actors, models and people hoping to be either. Chris was a fixture of that scene. He was reportedly offered the role of Bond himself, in the gap between Sean Connery and George Lazenby.</p>
+    </div>
+  </article>
+
+  <div class="pair">
+    <figure class="shot shot--half">
+      <div class="frame">
+        <img src="images/caroline-studio.jpg" alt="The studio aboard the Radio Caroline ship" onerror="slotEmpty(this)">
+        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/caroline-studio.jpg</code></span>
+      </div>
+      <figcaption>The shipboard studio.<span class="credit">Photo credit: add here</span></figcaption>
+    </figure>
+    <figure class="shot shot--half">
+      <div class="frame">
+        <img src="images/chris-moore-1964.jpg" alt="Chris Moore at the microphone, 1964" onerror="slotEmpty(this)">
+        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/chris-moore-1964.jpg</code></span>
+      </div>
+      <figcaption>At the microphone, 1964.<span class="credit">Photo credit: add here</span></figcaption>
+    </figure>
+  </div>
+
+  <article class="entry">
+    <div class="entry__year">1964</div>
+    <div>
+      <h3>Three men, a ship and £250,000</h3>
+      <p>Chris knew Ronan O'Rahilly, who wanted to put a radio station on a boat. It was Chris who introduced him to Ian Ross, his flatmate in Chelsea, whose father became one of the station's principal backers and helped raise the quarter of a million pounds the venture needed. And it was Chris who organised the purchase of the ship itself — a Danish passenger ferry, the MV Fredericia, refitted with a transmitter and a tall mast and re-anchored in international water off Felixstowe.</p>
+      <p>At noon on Easter Saturday, 28 March 1964, his was the first voice on British offshore radio. The first record he played was the Rolling Stones' <i>Not Fade Away</i>, dedicated to Ronan.</p>
+      <div class="aside">
+        <p>Accounts of that first record differ — some tellings name a different Stones single, others a Beatles one. <i>Not Fade Away</i>, dedicated to O'Rahilly, is the version given by the Pirate Radio Hall of Fame. If you were listening that afternoon, we would very much like to hear from you.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="wrap" style="padding-inline:0">
+    <figure class="shot shot--full">
+      <div class="frame">
+        <img src="images/mv-fredericia.jpg" alt="The MV Fredericia, the ship that became Radio Caroline" onerror="slotEmpty(this)">
+        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/mv-fredericia.jpg</code></span>
+      </div>
+      <figcaption>The MV Fredericia at anchor. Chris organised her purchase and conversion.<span class="credit">Photo credit: add here</span></figcaption>
+    </figure>
+  </div>
+
+  <article class="entry">
+    <div class="entry__year">1964–70</div>
+    <div>
+      <h3>Programme director</h3>
+      <p>He didn't stay at sea for long. The first full programme went to Simon Dee, and Chris moved ashore to become Caroline's first programme director. From there he hired the presenters — several of whom the BBC would later poach for the brand-new Radio 1, a station created largely to answer the pirates. He also spent years on the unglamorous work: keeping a station afloat, literally and financially, and keeping it outside territorial waters and beyond the reach of prosecution.</p>
+      <p>By 1967 Caroline had millions of listeners. In 1991 Chris told the story properly, at length, for the BBC documentary <i>A Pirate's Tale</i>. He is a member of the Pirate Radio Hall of Fame.</p>
+    </div>
+  </article>
+
+  <article class="entry">
+    <div class="entry__year">Mid 70s</div>
+    <div>
+      <h3>Barcote Manor</h3>
+      <p>Worn down by the endless work of keeping Caroline going, Chris was visiting a girlfriend in rural Oxfordshire when he came across Barcote Manor: a gothic pile run as something between a household and a commune. He took a tiny room there and stayed for twenty years, painting and photographing prolifically and sending himself up while he did it. He shot pictures for the Museum of Modern Art in Oxford. When the owner sold up in the mid-nineties, he moved Chris — by then a close friend — into a small cottage nearby.</p>
+    </div>
+  </article>
+
+  <div class="wrap" style="padding-inline:0">
+    <figure class="shot shot--full">
+      <div class="frame">
+        <img src="images/barcote.jpg" alt="Barcote Manor, Oxfordshire" onerror="slotEmpty(this)">
+        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/barcote.jpg</code></span>
+      </div>
+      <figcaption>Barcote Manor, where Chris kept a small room and a large body of work.<span class="credit">Photo credit: add here</span></figcaption>
+    </figure>
+  </div>
+
+  <article class="entry">
+    <div class="entry__year">Meanwhile</div>
+    <div>
+      <h3>A cave on La Gomera</h3>
+      <p>Years before it became a destination, Chris arrived at La Gomera in the Canaries by private boat and spent several months living in a cave near the Valle Gran Rey — the first outsider to do so, before the valley turned into a hippy retreat spoken of alongside Goa and Ibiza. He went back often during the Barcote years and took a stream of friends with him.</p>
+    </div>
+  </article>
+
+  <article class="entry">
+    <div class="entry__year">25 summers</div>
+    <div>
+      <h3>Carswell Bay</h3>
+      <p>He bought a rough wooden bungalow on the hillside above Carswell Bay on the Gower, and for the next quarter-century he spent his summers there: riding down each spring on an ex-police BMW motorbike, swimming, climbing back up the cliff, and keeping the rain out with inspired and precarious carpentry. Basic accommodation was his natural habitat — the rougher the better — and he occupied it as though it were a palace, holding court for whoever turned up.</p>
+    </div>
+  </article>
+
+  <div class="pair">
+    <figure class="shot shot--half">
+      <div class="frame">
+        <img src="images/carswell-bay.jpg" alt="Carswell Bay on the Gower peninsula" onerror="slotEmpty(this)">
+        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/carswell-bay.jpg</code></span>
+      </div>
+      <figcaption>Carswell Bay, twenty-five summers.<span class="credit">Photo credit: add here</span></figcaption>
+    </figure>
+    <figure class="shot shot--half">
+      <div class="frame">
+        <img src="images/chris-later-years.jpg" alt="Chris Moore in later life" onerror="slotEmpty(this)">
+        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/chris-later-years.jpg</code></span>
+      </div>
+      <figcaption>Later years.<span class="credit">Photo credit: add here</span></figcaption>
+    </figure>
+  </div>
+
+  <article class="entry">
+    <div class="entry__year">2021</div>
+    <div>
+      <h3>The last of it</h3>
+      <p>The trips to Wales stopped a couple of years before the end, as the floorboards gave out and the motorbike turned unreliable. Around the same time two women, Becka and Nay, moved in next door and became close friends, keeping an eye on him as he grew more sedentary and his health quietly declined. When Covid arrived they did his shopping. When his throat began troubling him in October 2020 they arranged his medical care and drove him to his appointments.</p>
+      <p>He was diagnosed with oesophageal cancer and died peacefully on 2 January 2021, aged eighty. He was cremated on the 22nd.</p>
+    </div>
+  </article>
+
+</div>
+
+<section class="band band--sea">
+  <div class="wrap listen">
+    <h2>Hear him</h2>
+    <p style="max-width:44ch">Recordings of Chris on air survive, collected by people who taped them off the radio sixty years ago and kept the reels.</p>
+    <ul>
+      <li>
+        <a href="https://www.offshoreradio.co.uk/djsmo.htm">Two Chris Moore airchecks from Caroline's earliest days</a>
+        <span class="note">Pirate Radio Hall of Fame — scroll to his entry. Simon Dee interrupts on both.</span>
+      </li>
+      <li>
+        <a href="https://archive.org/details/53-1964-03-29-sun-1630-1800-r-caroline-199m-chris-moore-simon-dee-some-edits">Chris Moore and Simon Dee, Sunday 29 March 1964</a>
+        <span class="note">Ninety minutes from Caroline's second day on air, at the Internet Archive.</span>
+      </li>
+      <li>
+        <a href="http://www.bbc.co.uk/programmes/b0080t61">A Pirate's Tale (BBC, 1991)</a>
+        <span class="note">The documentary in which Chris set out his part in the story in full.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="story-wall">
+  <div class="wrap">
+    <div class="stories__head">
+      <div>
+        <h2>Stories about Chris</h2>
+        <p>A memory, a meeting, an argument, something he said. Long or short — anything you'd want other people who knew him to read.</p>
+      </div>
+      <button class="btn" type="button" data-open-modal>Tell your story</button>
+    </div>
+
+    <div class="wall" id="wall">
+      <!--
+        FORM ENDPOINT / permanent stories
+        Stories collected by email (or by a form service) can be pasted in here
+        as extra blocks in exactly this shape, and they'll become part of the page:
+
+        <article class="story">
+          <h3>The day the mast went up</h3>
+          <p class="who">Jane Smith — listened from Frinton, 1964</p>
+          <p>Text of the story.</p>
+        </article>
+      -->
+      <div class="wall__empty" id="wall-empty">
+        <p>No stories on the page yet. Yours would be the first.</p>
+        <button class="btn btn--ghost" type="button" data-open-modal>Tell your story</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- modal ---------- -->
+<div class="modal" id="share" hidden>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="share-title">
+    <button class="modal__close" type="button" data-close-modal aria-label="Close">&times;</button>
+    <h2 id="share-title">Tell a story about Chris</h2>
+    <p class="modal__intro">Anything at all. How you met him, what he was like, what you were doing the first time you heard Caroline.</p>
+
+    <div class="field">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" autocomplete="name">
+      <p class="error" id="e-name" hidden>Please add your name.</p>
+    </div>
+
+    <div class="field">
+      <label for="f-who">How you knew him <span class="hint">— optional</span></label>
+      <input id="f-who" type="text" placeholder="Worked with him at Barcote / listened from Frinton in 1964">
+    </div>
+
+    <div class="field">
+      <label for="f-title">A title for your story <span class="hint">— optional</span></label>
+      <input id="f-title" type="text" placeholder="The day the mast went up">
+    </div>
+
+    <div class="field">
+      <label for="f-story">Your story</label>
+      <textarea id="f-story"></textarea>
+      <p class="error" id="e-story" hidden>Please write something before adding it.</p>
+    </div>
+
+    <div class="modal__actions">
+      <button class="btn" type="button" id="send-story">Send it to us</button>
+      <button class="btn btn--ghost" type="button" id="add-story">Add it to the page</button>
+    </div>
+
+    <p class="modal__foot">Sending opens your email app with the story ready to go, so it can be added here permanently. Adding it to the page shows it straight away, but only on your own screen and only until you reload.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <h2>Where this came from</h2>
+    <ul>
+      <li><a href="https://www.offshoreechos.com/Tribute%20to%20Chris%20Moore.html">Mike Plumley's tribute to Chris Moore</a>, Offshore Echos</li>
+      <li><a href="https://www.offshoreradio.co.uk/djsmo.htm">Chris Moore's entry at the Pirate Radio Hall of Fame</a>, with thanks to Mike Plumley and Joanna Turner</li>
+      <li><a href="https://en.wikipedia.org/wiki/Christopher_Moore_(DJ)">Christopher Moore (DJ)</a>, Wikipedia</li>
+      <li><a href="https://www.independent.co.uk/arts-entertainment/films/features/the-swashbuckling-rock-rebels-of-radio-caroline-1647240.html">John Walsh on the rock rebels of Radio Caroline</a>, The Independent, 2009</li>
+      <li><a href="https://en.wikipedia.org/wiki/Radio_Caroline">Radio Caroline</a>, Wikipedia</li>
+    </ul>
+    <p>Corrections and photographs are welcome — this page will only get better with them. Write to <a href="mailto:stories@example.com">stories@example.com</a>.</p>
+    <p>An unofficial tribute page, made by people who remember him.</p>
+  </div>
+</footer>
+
+<script>
+// Photo slots: if a file isn't there yet, show a labelled placeholder instead
+// of a broken image.
+function slotEmpty(img){
+  img.closest('.shot').classList.add('is-empty');
+  img.remove();
+}
+
+(function(){
+  var modal = document.getElementById('share');
+  var panel = modal.querySelector('.modal__panel');
+  var wall  = document.getElementById('wall');
+  var empty = document.getElementById('wall-empty');
+  var lastFocus = null;
+
+  var inbox = (document.querySelector('meta[name="tribute-inbox"]') || {}).content || 'stories@example.com';
+
+  var f = {
+    name:  document.getElementById('f-name'),
+    who:   document.getElementById('f-who'),
+    title: document.getElementById('f-title'),
+    story: document.getElementById('f-story')
+  };
+
+  function open(e){
+    if (e) e.preventDefault();
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    f.name.focus();
+  }
+
+  function close(){
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  function validate(){
+    var ok = true;
+    var nameBad = !f.name.value.trim();
+    var storyBad = !f.story.value.trim();
+    document.getElementById('e-name').hidden = !nameBad;
+    document.getElementById('e-story').hidden = !storyBad;
+    if (nameBad){ f.name.focus(); ok = false; }
+    else if (storyBad){ f.story.focus(); ok = false; }
+    return ok;
+  }
+
+  function addToPage(){
+    if (!validate()) return;
+    var article = document.createElement('article');
+    article.className = 'story';
+
+    var h = document.createElement('h3');
+    h.textContent = f.title.value.trim() || 'A memory of Chris';
+
+    var who = document.createElement('p');
+    who.className = 'who';
+    who.textContent = f.who.value.trim()
+      ? f.name.value.trim() + ' — ' + f.who.value.trim()
+      : f.name.value.trim();
+
+    var body = document.createElement('p');
+    body.textContent = f.story.value.trim();
+
+    article.appendChild(h);
+    article.appendChild(who);
+    article.appendChild(body);
+
+    if (empty) empty.hidden = true;
+    wall.insertBefore(article, wall.firstChild);
+
+    close();
+    article.scrollIntoView({behavior:'smooth', block:'center'});
+    f.title.value = ''; f.story.value = '';
+  }
+
+  function sendByEmail(){
+    if (!validate()) return;
+    var subject = 'A story about Chris Moore' + (f.title.value.trim() ? ': ' + f.title.value.trim() : '');
+    var lines = [
+      'Name: ' + f.name.value.trim(),
+      'How I knew Chris: ' + (f.who.value.trim() || '—'),
+      '',
+      f.story.value.trim()
+    ];
+    window.location.href = 'mailto:' + inbox +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach(function(el){
+    el.addEventListener('click', open);
+  });
+  document.querySelectorAll('[data-close-modal]').forEach(function(el){
+    el.addEventListener('click', close);
+  });
+  modal.addEventListener('mousedown', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !modal.hidden) close();
+    if (e.key === 'Tab' && !modal.hidden){
+      var items = panel.querySelectorAll('button, input, textarea, a[href]');
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+
+  document.getElementById('add-story').addEventListener('click', addToPage);
+  document.getElementById('send-story').addEventListener('click', sendByEmail);
+})();
+</script>
+</body>
+</html>
