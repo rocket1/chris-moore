@@ -216,6 +216,26 @@ h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem);margin-bottom:1.2rem;max-width:
 }
 .aside p:last-child{margin-bottom:0}
 
+/* ---------- what it meant (quotes) ---------- */
+.said__intro{max-width:44ch;color:var(--mute);margin-bottom:clamp(2rem,5vw,3rem)}
+.said__lead{margin:0 0 clamp(2.5rem,6vw,4rem);max-width:30ch}
+.said__lead p{
+  font-family:var(--display);font-size:clamp(1.45rem,1rem + 2.2vw,2.4rem);
+  line-height:1.15;letter-spacing:-.01em;margin:0;text-wrap:balance;
+}
+.said__lead p::before{content:"\201C";color:var(--dial)}
+.said__lead p::after{content:"\201D";color:var(--dial)}
+.quotes{display:grid;gap:0 clamp(2rem,5vw,4rem);border-top:1px solid var(--rule)}
+@media (min-width:52rem){.quotes{grid-template-columns:1fr 1fr}}
+.quote{margin:0;padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+.quote p{font-family:var(--display);font-size:1.12rem;line-height:1.45;margin:0 0 .8rem}
+.quote p::before{content:"\201C"}
+.quote p::after{content:"\201D"}
+.said cite,.said__lead cite{display:block;font-style:normal;font-size:.85rem;color:var(--mute);line-height:1.5}
+.said cite b{font-weight:500;color:var(--ink)}
+.said__lead cite{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--rule);max-width:28rem}
+.said__more{margin-top:2rem;font-size:.9rem;color:var(--mute);max-width:44ch}
+
 /* ---------- listen ---------- */
 .listen ul{list-style:none;margin:0;padding:0;max-width:var(--measure)}
 .listen li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.16)}
@@ -468,6 +488,47 @@ footer li{margin-bottom:.5rem}
 
 </div>
 
+<section class="band said" aria-labelledby="said-title">
+  <div class="wrap">
+    <h2 id="said-title">What it meant</h2>
+    <p class="said__intro">Chris helped put the ship in the water and spoke the first words from it. This is what the people who worked on it, and the people who listened, have said it did.</p>
+
+    <blockquote class="said__lead">
+      <p>If a ship was parked off the coast, three miles out, the whole country would tune in and turn on.</p>
+      <cite><b>Ronan O'Rahilly</b>, Radio Caroline's founder, on the idea Chris turned into a ship — quoted in <a href="https://www.irishpost.com/entertainment/pirate-radio-pioneers-story-comes-to-london-screen-307968">The Irish Post</a></cite>
+    </blockquote>
+
+    <div class="quotes">
+      <blockquote class="quote">
+        <p>Pirate radio, and in particular Radio Caroline, was a really exciting part of all our lives in those days and summed up the spirit of the times culturally and musically.</p>
+        <cite><b>Paul McCartney</b> — quoted in <a href="https://flashesandflames.com/2024/03/15/how-a-radio-ship-and-7-men-shook-up-britain-in-1964/">Flashes &amp; Flames</a>, 2024</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>Back in the '60s, kids in America had a wealth of radio stations to listen to. Here in the U.K., we had one, the BBC, and they hadn't discovered The Beatles. We needed Radio Caroline, from a ship three miles off the coast, to hear that pop music that we craved for.</p>
+        <cite><b>Ray Clark</b>, broadcaster and Caroline historian — <a href="https://abcnews.com/International/radio-caroline-britains-pirate-radio-station-broadcasting-sea/story?id=110204908">ABC News</a>, 2024</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>After a couple of weeks we had more people listening than all of the BBC networks combined and that got up their nose somewhat because they were convinced there was no demand for this kind of music</p>
+        <cite><b>Peter Moore</b>, Radio Caroline station manager — <a href="https://www.abc.net.au/news/2017-08-13/radio-caroline-reunite-50-years-after-broadcast-ship-shut-down/8801582">ABC News (Australia)</a>, 2017</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>I would say today it was the equivalent of taking away Facebook, Twitter, all the social media. It was that important to us. It linked us all. It was the fabric of our lives.</p>
+        <cite><b>Steve Anthony</b>, a sixteen-year-old listener when the pirates were outlawed in August 1967 — <a href="https://www.abc.net.au/news/2017-08-13/radio-caroline-reunite-50-years-after-broadcast-ship-shut-down/8801582">ABC News (Australia)</a>, 2017</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>I saw this little pirate ship giving the government so much trouble and I thought 'wow, that's great'.</p>
+        <cite><b>Tony Blackburn</b>, Caroline DJ and later the first voice on BBC Radio 1 — <a href="https://www.eadt.co.uk/news/24218361.tony-blackburn-celebrates-radio-caroline-bbc-radio-2/">East Anglian Daily Times</a>, 2024</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>I think it lit a spark. It was just so special and so different and worth fighting for.</p>
+        <cite><b>Ray Clark</b> — <a href="https://www.abc.net.au/news/2017-08-13/radio-caroline-reunite-50-years-after-broadcast-ship-shut-down/8801582">ABC News (Australia)</a>, 2017</cite>
+      </blockquote>
+    </div>
+
+    <p class="said__more">Know something someone said about Chris himself — on air, in print, or at the bar? <a href="#share" data-open-modal>Send it in</a> and it can go here.</p>
+  </div>
+</section>
+
 <section class="band band--sea">
   <div class="wrap listen">
     <h2>Hear him</h2>
@@ -566,6 +627,7 @@ footer li{margin-bottom:.5rem}
       <li><a href="https://en.wikipedia.org/wiki/Christopher_Moore_(DJ)">Christopher Moore (DJ)</a>, Wikipedia</li>
       <li><a href="https://www.independent.co.uk/arts-entertainment/films/features/the-swashbuckling-rock-rebels-of-radio-caroline-1647240.html">John Walsh on the rock rebels of Radio Caroline</a>, The Independent, 2009</li>
       <li><a href="https://en.wikipedia.org/wiki/Radio_Caroline">Radio Caroline</a>, Wikipedia</li>
+      <li>Quotes in “What it meant” are linked to their sources: <a href="https://www.irishpost.com/entertainment/pirate-radio-pioneers-story-comes-to-london-screen-307968">The Irish Post</a>, <a href="https://flashesandflames.com/2024/03/15/how-a-radio-ship-and-7-men-shook-up-britain-in-1964/">Flashes &amp; Flames</a>, <a href="https://abcnews.com/International/radio-caroline-britains-pirate-radio-station-broadcasting-sea/story?id=110204908">ABC News</a>, <a href="https://www.abc.net.au/news/2017-08-13/radio-caroline-reunite-50-years-after-broadcast-ship-shut-down/8801582">ABC News (Australia)</a> and the <a href="https://www.eadt.co.uk/news/24218361.tony-blackburn-celebrates-radio-caroline-bbc-radio-2/">East Anglian Daily Times</a></li>
     </ul>
     <p>Corrections and photographs are welcome — this page will only get better with them. Write to <a href="mailto:stories@example.com">stories@example.com</a>.</p>
     <p>An unofficial tribute page, made by people who remember him.</p>
