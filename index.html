@@ -220,20 +220,17 @@ h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem);margin-bottom:1.2rem;max-width:
 }
 .aside p:last-child{margin-bottom:0}
 
-/* faint, blurred black-and-white photo behind each era (set --photo on the section) */
-.era,.band--radio{overflow:hidden;isolation:isolate}
+/* faint, blurred black-and-white photo behind each era (set --photo on the section).
+   The blur, greyscale and left-hand fade are baked into images/bg/*.webp so
+   nothing has to be recomputed while scrolling. */
+.era,.band--radio{overflow:hidden}
 .era > .wrap,.band--radio > .wrap{position:relative;z-index:1}
 .era[style*="--photo"]::after,.band--radio[style*="--photo"]::after{
-  content:"";position:absolute;inset:-24px;z-index:0;pointer-events:none;
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:var(--photo) center/cover no-repeat;
-  filter:grayscale(1) blur(var(--photo-blur,5px)) contrast(1.1);
-  opacity:var(--photo-opacity,.2);
-  mix-blend-mode:var(--photo-blend,multiply);
-  -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,.35),#000 65%);
-          mask-image:linear-gradient(to right,rgba(0,0,0,.35),#000 65%);
+  opacity:var(--photo-opacity,.18);
 }
-/* dark sections: lighten the photo into the colour instead of darkening it */
-.era--club,.era--sea,.era--dusk,.band--radio{--photo-blend:screen;--photo-opacity:.16}
+.era--club,.era--sea,.era--dusk,.band--radio{--photo-opacity:.12}
 
 /* 1940s — the family album */
 .era--album{
@@ -452,7 +449,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="era era--album" style="--photo:url('images/chris-moore-boyhood-1946.jpg')">
+<section class="era era--album" style="--photo:url('images/bg/chris-moore-boyhood-1946.webp')">
   <div class="wrap">
     <p class="era__kicker">America, then Knightsbridge</p>
     <article class="entry">
@@ -475,7 +472,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="era era--club" style="--photo:url('images/chris-moore-portrait.jpg')">
+<section class="era era--club" style="--photo:url('images/bg/chris-moore-portrait.webp')">
   <div class="wrap">
     <p class="era__kicker">Jermyn Street, St James's</p>
     <article class="entry">
@@ -491,7 +488,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="era era--sea" style="--photo:url('images/mv-fredericia.jpg')">
+<section class="era era--sea" style="--photo:url('images/bg/mv-fredericia.webp')">
   <div class="wrap">
     <p class="era__kicker">Three miles off Felixstowe</p>
     <article class="entry">
@@ -530,7 +527,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="era era--seventies" style="--photo:url('images/barcote.jpg')">
+<section class="era era--seventies" style="--photo:url('images/bg/barcote.webp')">
   <div class="wrap">
     <p class="era__kicker">Oxfordshire</p>
     <article class="entry">
@@ -550,7 +547,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="era era--gomera" style="--photo:url('images/la-gomera.jpg')">
+<section class="era era--gomera" style="--photo:url('images/bg/la-gomera.webp')">
   <div class="wrap">
     <p class="era__kicker">Valle Gran Rey, the Canary Islands</p>
     <article class="entry">
@@ -570,7 +567,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="era era--gower" style="--photo:url('images/caswell-bay.jpg')">
+<section class="era era--gower" style="--photo:url('images/bg/caswell-bay.webp')">
   <div class="wrap">
     <p class="era__kicker">The Gower, South Wales</p>
     <article class="entry">
@@ -599,7 +596,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="era era--dusk" style="--photo:url('images/chris-later-years.jpg')">
+<section class="era era--dusk" style="--photo:url('images/bg/chris-later-years.webp')">
   <div class="wrap">
     <p class="era__kicker">Oxfordshire</p>
     <article class="entry">
@@ -654,7 +651,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="band band--radio" style="--photo:url('images/caroline-studio.jpg')">
+<section class="band band--radio" style="--photo:url('images/bg/caroline-studio.webp')">
   <div class="wrap listen">
     <h2>Hear him</h2>
     <p style="max-width:44ch">Recordings of Chris on air survive, collected by people who taped them off the radio sixty years ago and kept the reels.</p>
