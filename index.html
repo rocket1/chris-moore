@@ -56,14 +56,13 @@
 
 <style>
 :root{
-  --fog:#dce0d9;
-  --paper:#eff1ec;
-  --ink:#131c1e;
-  --sea:#0f2a31;
-  --dial:#b4372c;
-  --brass:#8f7434;
-  --mute:#4c5957;
-  --rule:rgba(19,28,30,.18);
+  /* page default: Bakelite-radio cream */
+  --bg:#f3e9d4;
+  --paper:#faf4e6;
+  --ink:#2a1d14;
+  --mute:#6b5846;
+  --accent:#c8432b;
+  --rule:rgba(42,29,20,.18);
 
   --display:"Fraunces",Georgia,"Times New Roman",serif;
   --body:"Archivo","Helvetica Neue",Arial,sans-serif;
@@ -76,7 +75,7 @@
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;
-  background:var(--fog);
+  background:var(--bg);
   color:var(--ink);
   font-family:var(--body);
   font-size:clamp(1rem,.96rem + .25vw,1.125rem);
@@ -84,45 +83,51 @@ body{
   font-variant-numeric:oldstyle-nums;
 }
 img{max-width:100%;display:block}
-a{color:var(--ink);text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:var(--dial)}
+a{color:inherit;text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:var(--accent)}
 a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:2px solid var(--dial);outline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 .wrap{max-width:76rem;margin:0 auto;padding-inline:var(--gutter)}
 .col{max-width:var(--measure)}
 p{margin:0 0 1.1em}
 h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0}
 
-/* ---------- tuning dial ---------- */
+/* every themed block reads its colours from the same tokens */
+.era,.band{background-color:var(--bg);color:var(--ink);position:relative}
+
+/* ---------- tuning dial: lit radio glass ---------- */
 .dial{
   position:relative;
   height:74px;
-  border-bottom:1px solid var(--rule);
   overflow:hidden;
   background:
-    linear-gradient(to bottom,rgba(255,255,255,.5),transparent 60%);
+    radial-gradient(ellipse at 62% 120%,rgba(255,170,70,.35),transparent 60%),
+    linear-gradient(to bottom,#2a1c12,#170f0a);
+  border-bottom:3px solid #8a6a3a;
 }
 .dial__ticks{
   position:absolute;inset:auto 0 0 0;height:26px;
   background-image:
-    repeating-linear-gradient(to right,var(--rule) 0 1px,transparent 1px 20px),
-    repeating-linear-gradient(to right,rgba(19,28,30,.45) 0 1px,transparent 1px 100px);
+    repeating-linear-gradient(to right,rgba(255,196,120,.35) 0 1px,transparent 1px 20px),
+    repeating-linear-gradient(to right,rgba(255,196,120,.8) 0 1px,transparent 1px 100px);
   background-size:100% 10px,100% 20px;
   background-position:bottom left;
   background-repeat:repeat-x;
 }
 .dial__marks{
   position:absolute;inset:0;
-  font-family:var(--body);font-size:.7rem;letter-spacing:.06em;color:var(--mute);
+  font-family:var(--body);font-size:.7rem;letter-spacing:.06em;color:#e7b877;
+  text-shadow:0 0 6px rgba(255,170,70,.6);
 }
 .dial__mark{position:absolute;bottom:30px;transform:translateX(-50%)}
 .dial__pointer{
-  position:absolute;top:0;bottom:0;left:62%;width:2px;background:var(--dial);
-  box-shadow:0 0 0 4px rgba(180,55,44,.12);
+  position:absolute;top:0;bottom:0;left:62%;width:2px;background:#ff5a3c;
+  box-shadow:0 0 10px 2px rgba(255,90,60,.55);
 }
 .dial__pointer span{
   position:absolute;top:9px;left:9px;white-space:nowrap;
-  font-family:var(--display);font-size:.95rem;color:var(--dial);
+  font-family:var(--display);font-size:.95rem;color:#ff8a5c;
+  text-shadow:0 0 8px rgba(255,90,60,.7);
 }
 @media (prefers-reduced-motion:no-preference){
   .dial__pointer{animation:tune 1.6s cubic-bezier(.2,.9,.2,1) both}
@@ -141,7 +146,7 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0}
   max-width:17ch;
   text-wrap:balance;
 }
-.hero blockquote em{font-style:italic;color:var(--dial)}
+.hero blockquote em{font-style:italic;color:var(--accent)}
 .hero__attrib{
   margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--rule);
   max-width:26rem;color:var(--mute);font-size:.9rem;line-height:1.5;
@@ -157,22 +162,22 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0}
 .btn{
   display:inline-block;font:inherit;font-weight:500;
   padding:.72em 1.35em;border:1px solid var(--ink);border-radius:2px;
-  background:var(--ink);color:var(--fog);cursor:pointer;text-decoration:none;
+  background:var(--ink);color:var(--bg);cursor:pointer;text-decoration:none;
   transition:background .15s,color .15s;
 }
-.btn:hover{background:var(--dial);border-color:var(--dial);color:#fff}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn--ghost{background:transparent;color:var(--ink)}
-.btn--ghost:hover{background:var(--ink);border-color:var(--ink);color:var(--fog)}
+.btn--ghost:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 
 /* ---------- photo slots ---------- */
 .shot{margin:clamp(2.5rem,6vw,4.5rem) 0}
-.shot .frame{background:rgba(15,42,49,.06);border:1px solid var(--rule)}
+.shot .frame{background:rgba(0,0,0,.06);border:1px solid var(--rule)}
 .shot img{width:100%;height:auto}
 .shot .slot{display:none}
 .shot.is-empty .frame{
   display:grid;place-content:center;gap:.5rem;text-align:center;
   aspect-ratio:var(--ratio,16/7);padding:1.5rem;
-  background-image:repeating-linear-gradient(-45deg,rgba(15,42,49,.05) 0 12px,transparent 12px 24px);
+  background-image:repeating-linear-gradient(-45deg,rgba(127,127,127,.1) 0 12px,transparent 12px 24px);
 }
 .shot.is-empty .slot{display:block;color:var(--mute);font-size:.82rem;line-height:1.5}
 .shot.is-empty .slot b{display:block;font-weight:500;color:var(--ink);font-size:.95rem;margin-bottom:.35rem}
@@ -182,81 +187,184 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0}
 }
 .credit{display:block;margin-top:.2rem;opacity:.75}
 .shot--half{--ratio:4/5}
-.pair{display:grid;gap:clamp(1rem,3vw,2rem)}
+.pair{display:grid;gap:clamp(1rem,3vw,2rem);margin:clamp(2.5rem,6vw,4.5rem) 0}
 @media (min-width:46rem){.pair{grid-template-columns:1fr 1fr;align-items:start}.pair .shot{margin:0}}
 
 /* ---------- sections ---------- */
 .band{padding:clamp(3rem,8vw,6rem) 0}
-.band--sea{background:var(--sea);color:#dfe5e3}
-.band--sea h2,.band--sea h3{color:#fff}
-.band--sea a{color:#fff;text-decoration-color:#e8a33d}
-.band--sea .btn{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
-.band--sea .btn:hover{background:#fff;color:var(--sea);border-color:#fff}
-
 h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem);margin-bottom:1.2rem;max-width:20ch}
 
-/* ---------- life, as a run down the dial ---------- */
-.life{border-top:1px solid var(--rule)}
+/* ---------- life, one era at a time ---------- */
+.era{padding:clamp(3.5rem,8vw,6rem) 0}
+.era__kicker{
+  font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.5rem;
+}
 .entry{
   display:grid;gap:.2rem 2.5rem;
-  padding:clamp(1.8rem,4vw,2.8rem) 0;border-bottom:1px solid var(--rule);
+  padding:clamp(1.8rem,4vw,2.8rem) 0;border-top:1px solid var(--rule);
 }
 @media (min-width:52rem){
   .entry{grid-template-columns:8rem minmax(0,var(--measure));}
 }
 .entry__year{
-  font-family:var(--display);font-size:1.05rem;color:var(--dial);
+  font-family:var(--display);font-size:1.05rem;color:var(--accent);
   padding-top:.25rem;letter-spacing:.01em;
 }
 .entry h3{font-size:1.25rem;margin-bottom:.55rem}
 .entry p:last-child{margin-bottom:0}
+.era .shot:last-child,.era .pair:last-child{margin-bottom:0}
 .aside{
-  margin-top:1.2rem;padding-left:1rem;border-left:2px solid var(--brass);
+  margin-top:1.2rem;padding-left:1rem;border-left:2px solid var(--accent);
   font-size:.88rem;color:var(--mute);
 }
 .aside p:last-child{margin-bottom:0}
 
-/* ---------- what it meant (quotes) ---------- */
+/* faint, blurred black-and-white photo behind each era (set --photo on the section) */
+.era,.band--radio{overflow:hidden;isolation:isolate}
+.era > .wrap,.band--radio > .wrap{position:relative;z-index:1}
+.era[style*="--photo"]::after,.band--radio[style*="--photo"]::after{
+  content:"";position:absolute;inset:-24px;z-index:0;pointer-events:none;
+  background:var(--photo) center/cover no-repeat;
+  filter:grayscale(1) blur(var(--photo-blur,5px)) contrast(1.1);
+  opacity:var(--photo-opacity,.2);
+  mix-blend-mode:var(--photo-blend,multiply);
+  -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,.35),#000 65%);
+          mask-image:linear-gradient(to right,rgba(0,0,0,.35),#000 65%);
+}
+/* dark sections: lighten the photo into the colour instead of darkening it */
+.era--club,.era--sea,.era--dusk,.band--radio{--photo-blend:screen;--photo-opacity:.16}
+
+/* 1940s — the family album */
+.era--album{
+  --bg:#e8d9bc;--ink:#3b2a1c;--mute:#6e5839;--accent:#8a5a2b;--rule:rgba(59,42,28,.2);
+  background-image:radial-gradient(ellipse at center,transparent 55%,rgba(110,80,40,.18));
+}
+.era--album .entry h3{font-style:italic;font-weight:400}
+.era--album .shot .frame{
+  position:relative;background:#fbf6ea;border:0;padding:14px 14px 18px;
+  box-shadow:0 1px 2px rgba(0,0,0,.15),0 10px 24px rgba(60,40,20,.18);
+  transform:rotate(-.6deg);
+}
+.era--album .shot .frame::before,.era--album .shot .frame::after{
+  content:"";position:absolute;width:28px;height:28px;background:#3b2a1c;z-index:1;
+}
+.era--album .shot .frame::before{top:4px;left:4px;clip-path:polygon(0 0,100% 0,0 100%)}
+.era--album .shot .frame::after{bottom:4px;right:4px;clip-path:polygon(100% 0,100% 100%,0 100%)}
+.era--album .shot img{filter:sepia(.35) contrast(1.02)}
+
+/* early 60s — Mayfair after dark */
+.era--club{
+  --bg:#1c1020;--ink:#f1e4ee;--mute:#bfa6b8;--accent:#ff5fae;--rule:rgba(255,95,174,.22);
+  background-image:
+    radial-gradient(ellipse at 85% 10%,rgba(255,95,174,.18),transparent 45%),
+    radial-gradient(ellipse at 10% 90%,rgba(231,184,74,.12),transparent 45%);
+}
+.era--club .entry__year{text-shadow:0 0 6px rgba(255,95,174,.8),0 0 18px rgba(255,95,174,.45)}
+.era--club .entry h3{font-style:italic;color:#e7b84a}
+
+/* 1964–70 — the North Sea */
+.era--sea{
+  --bg:#0f2c40;--ink:#e2edf2;--mute:#9fb7c4;--accent:#f4b832;--rule:rgba(226,237,242,.18);
+  background-image:linear-gradient(to bottom,#0f2c40,#0a1f2e);
+}
+.era--sea::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:16px;
+  background:radial-gradient(circle at 16px 0,#1c1020 14px,transparent 15px) repeat-x;
+  background-size:32px 16px;
+}
+.era--sea .shot .frame{border-color:rgba(244,184,50,.35)}
+
+/* mid 70s — Barcote Manor */
+.era--seventies{
+  --bg:#f1dcaa;--ink:#3a2416;--mute:#6f4f33;--accent:#b5541c;--rule:rgba(58,36,22,.2);
+  padding-top:calc(clamp(3.5rem,8vw,6rem) + 36px);
+}
+.era--seventies::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:36px;
+  background:linear-gradient(to bottom,#e2b53b 0 25%,#d9822b 25% 50%,#b5541c 50% 75%,#6b3416 75%);
+}
+.era--seventies .entry h3{font-weight:400;font-style:italic;font-size:1.5rem}
+.era--seventies .aside{border-color:#6b7a2a}
+
+/* La Gomera — sun on volcanic rock */
+.era--gomera{
+  --bg:#f2d4ae;--ink:#36170c;--mute:#7a4a32;--accent:#b23a1e;--rule:rgba(54,23,12,.18);
+  background-image:radial-gradient(circle at 92% 6%,rgba(255,196,80,.65),rgba(255,196,80,0) 32%);
+}
+.era--gomera .entry__year{color:#1f5f8b}
+
+/* Caswell Bay — Gower sea mist */
+.era--gower{
+  --bg:#dae8e2;--ink:#17302b;--mute:#4b6a62;--accent:#2a7b69;--rule:rgba(23,48,43,.18);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 22px,rgba(42,123,105,.06) 22px 23px);
+}
+
+/* 2021 — dusk */
+.era--dusk{
+  --bg:#2f2a3c;--ink:#ece6f0;--mute:#b6abc2;--accent:#e2a99c;--rule:rgba(236,230,240,.16);
+  background-image:linear-gradient(to bottom,#3b3449,#211d2b);
+}
+
+/* ---------- what it meant: pop art ---------- */
+.band--pop{
+  --bg:#f4d84e;--ink:#1d1a14;--mute:#4f4528;--accent:#d22f27;--rule:rgba(29,26,20,.22);
+  background-image:radial-gradient(rgba(210,47,39,.16) 1.3px,transparent 1.7px);
+  background-size:11px 11px;
+}
 .said__intro{max-width:44ch;color:var(--mute);margin-bottom:clamp(2rem,5vw,3rem)}
 .said__lead{margin:0 0 clamp(2.5rem,6vw,4rem);max-width:30ch}
 .said__lead p{
   font-family:var(--display);font-size:clamp(1.45rem,1rem + 2.2vw,2.4rem);
   line-height:1.15;letter-spacing:-.01em;margin:0;text-wrap:balance;
 }
-.said__lead p::before{content:"\201C";color:var(--dial)}
-.said__lead p::after{content:"\201D";color:var(--dial)}
-.quotes{display:grid;gap:0 clamp(2rem,5vw,4rem);border-top:1px solid var(--rule)}
+.said__lead p::before{content:"\201C";color:var(--accent)}
+.said__lead p::after{content:"\201D";color:var(--accent)}
+.quotes{display:grid;gap:clamp(1rem,2.5vw,1.5rem) clamp(1rem,2.5vw,1.5rem)}
 @media (min-width:52rem){.quotes{grid-template-columns:1fr 1fr}}
-.quote{margin:0;padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+.quote{
+  margin:0;padding:1.4rem 1.5rem;background:#fffaf0;border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);
+}
 .quote p{font-family:var(--display);font-size:1.12rem;line-height:1.45;margin:0 0 .8rem}
-.quote p::before{content:"\201C"}
-.quote p::after{content:"\201D"}
+.quote p::before{content:"\201C";color:var(--accent)}
+.quote p::after{content:"\201D";color:var(--accent)}
 .said cite,.said__lead cite{display:block;font-style:normal;font-size:.85rem;color:var(--mute);line-height:1.5}
-.said cite b{font-weight:500;color:var(--ink)}
-.said__lead cite{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--rule);max-width:28rem}
+.said cite b{font-weight:600;color:var(--ink)}
+.said__lead cite{margin-top:1rem;padding-top:.8rem;border-top:2px solid var(--ink);max-width:28rem}
 .said__more{margin-top:2rem;font-size:.9rem;color:var(--mute);max-width:44ch}
 
-/* ---------- listen ---------- */
+/* ---------- listen: walnut cabinet and speaker grille ---------- */
+.band--radio{
+  --bg:#3a2417;--ink:#f3e4cc;--mute:#cdb393;--accent:#f0a23b;--rule:rgba(243,228,204,.18);
+  background-image:
+    radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,.35)),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 2px,transparent 2px 6px);
+  border-top:6px solid #8a6a3a;border-bottom:6px solid #8a6a3a;
+}
 .listen ul{list-style:none;margin:0;padding:0;max-width:var(--measure)}
-.listen li{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.16)}
-.listen li:first-child{border-top:1px solid rgba(255,255,255,.16)}
-.listen .note{display:block;font-size:.85rem;opacity:.75;margin-top:.15rem}
+.listen li{padding:.9rem 0;border-bottom:1px solid var(--rule)}
+.listen li:first-child{border-top:1px solid var(--rule)}
+.listen .note{display:block;font-size:.85rem;color:var(--mute);margin-top:.15rem}
 
-/* ---------- stories ---------- */
+/* ---------- stories: airmail ---------- */
+.band--mail{--bg:#f1ebde}
 .stories__head{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-end;justify-content:space-between;margin-bottom:2rem}
 .stories__head p{max-width:44ch;margin:0;color:var(--mute)}
 .wall{display:grid;gap:1.25rem}
 @media (min-width:52rem){.wall{grid-template-columns:1fr 1fr}}
 .story{
-  background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--dial);
-  padding:1.4rem 1.5rem;
+  background:#fffdf7;
+  border:7px solid transparent;
+  border-image:repeating-linear-gradient(-45deg,#c8312b 0 9px,#fffdf7 9px 15px,#1f4e8c 15px 24px,#fffdf7 24px 30px) 7;
+  padding:1.3rem 1.4rem;
 }
 .story h3{font-size:1.05rem;margin-bottom:.15rem}
 .story .who{font-size:.82rem;color:var(--mute);margin-bottom:.8rem}
 .story p{margin:0;white-space:pre-wrap}
 .wall__empty{
   grid-column:1/-1;padding:clamp(2rem,6vw,3.5rem);text-align:center;
-  border:1px dashed var(--rule);color:var(--mute);
+  border:1px dashed var(--rule);color:var(--mute);background:rgba(255,255,255,.4);
 }
 .wall__empty p{margin:0 auto 1.2rem;max-width:34ch}
 
@@ -264,7 +372,7 @@ h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem);margin-bottom:1.2rem;max-width:
 .modal[hidden]{display:none}
 .modal{
   position:fixed;inset:0;z-index:50;display:grid;place-items:center;
-  padding:clamp(0rem,3vw,2rem);background:rgba(15,42,49,.55);
+  padding:clamp(0rem,3vw,2rem);background:rgba(23,15,10,.6);
 }
 .modal__panel{
   background:var(--paper);width:min(38rem,100%);max-height:100dvh;overflow:auto;
@@ -281,8 +389,8 @@ h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem);margin-bottom:1.2rem;max-width:
   background:#fff;border:1px solid var(--rule);border-radius:2px;padding:.7em .8em;
 }
 .field textarea{min-height:9rem;resize:vertical;line-height:1.55}
-.field input:focus,.field textarea:focus{border-color:var(--ink);outline:2px solid var(--dial);outline-offset:1px}
-.error{color:var(--dial);font-size:.85rem;margin-top:.4rem}
+.field input:focus,.field textarea:focus{border-color:var(--ink);outline:2px solid var(--accent);outline-offset:1px}
+.error{color:var(--accent);font-size:.85rem;margin-top:.4rem}
 .error[hidden]{display:none}
 .modal__actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.8rem}
 .modal__actions .btn{flex:1 1 auto}
@@ -290,7 +398,7 @@ h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem);margin-bottom:1.2rem;max-width:
   float:right;margin:-.4rem -.4rem 0 1rem;background:none;border:0;padding:.4rem;
   font:inherit;font-size:1.4rem;line-height:1;color:var(--mute);cursor:pointer;
 }
-.modal__close:hover{color:var(--dial)}
+.modal__close:hover{color:var(--accent)}
 .modal__foot{margin-top:1.4rem;font-size:.8rem;color:var(--mute);line-height:1.5}
 
 /* ---------- footer ---------- */
@@ -299,7 +407,7 @@ footer h2{font-size:1.1rem;color:var(--ink);margin-bottom:.9rem}
 footer ul{list-style:none;margin:0 0 2rem;padding:0;max-width:var(--measure)}
 footer li{margin-bottom:.5rem}
 .skip{position:absolute;left:-9999px}
-.skip:focus{left:var(--gutter);top:.5rem;position:absolute;z-index:99;background:var(--ink);color:var(--fog);padding:.6em 1em}
+.skip:focus{left:var(--gutter);top:.5rem;position:absolute;z-index:99;background:var(--ink);color:var(--bg);padding:.6em 1em}
 </style>
 </head>
 
@@ -344,20 +452,19 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<div class="wrap life">
-
-  <article class="entry">
-    <div class="entry__year">1940</div>
-    <div>
-      <h3>An American childhood, mostly unrecorded</h3>
-      <p>Chris was born on 16 April 1940 and brought to England at the age of eight by his American mother. She married an Englishman, and the family lived in a large Knightsbridge flat; Chris was sent off to boarding school. Friends later recalled him dropping tantalising hints about his parents' circle — names from the world of 1950s diplomacy and espionage — without ever filling in much detail. Technically he remained an American all his life.</p>
-      <div class="aside">
-        <p>Radio Caroline's 1964 press office said he was born in Washington DC, and that is the version most obituaries carried. Later research by Mervyn Hagger, cited by the Pirate Radio Hall of Fame, points to California instead.</p>
+<section class="era era--album" style="--photo:url('images/chris-moore-boyhood-1946.jpg')">
+  <div class="wrap">
+    <p class="era__kicker">America, then Knightsbridge</p>
+    <article class="entry">
+      <div class="entry__year">1940</div>
+      <div>
+        <h3>An American childhood, mostly unrecorded</h3>
+        <p>Chris was born on 16 April 1940 and brought to England at the age of eight by his American mother. She married an Englishman, and the family lived in a large Knightsbridge flat; Chris was sent off to boarding school. Friends later recalled him dropping tantalising hints about his parents' circle — names from the world of 1950s diplomacy and espionage — without ever filling in much detail. Technically he remained an American all his life.</p>
+        <div class="aside">
+          <p>Radio Caroline's 1964 press office said he was born in Washington DC, and that is the version most obituaries carried. Later research by Mervyn Hagger, cited by the Pirate Radio Hall of Fame, points to California instead.</p>
+        </div>
       </div>
-    </div>
-  </article>
-
-  <div class="wrap" style="padding-inline:0">
+    </article>
     <figure class="shot shot--full">
       <div class="frame">
         <img src="images/chris-moore-boyhood-1946.jpg" alt="Christopher Moore as a small boy, crouching on a lawn, about 1946" onerror="slotEmpty(this)">
@@ -366,16 +473,53 @@ footer li{margin-bottom:.5rem}
       <figcaption>Christopher Moore, son of Larry Moore and Nancy Stull Moore, at 5578 N. 16th St., about 1946. After his parents' divorce, Chris was taken to England by his mother.<span class="credit">Photo credit: family album</span></figcaption>
     </figure>
   </div>
+</section>
 
-  <article class="entry">
-    <div class="entry__year">Early 60s</div>
-    <div>
-      <h3>The Crazy Elephant</h3>
-      <p>Before radio there was the Merchant Navy, where he worked as a steward — useful experience, as it turned out — and a spell in advertising. Then he started spinning records at the Crazy Elephant, a club on Curzon Street part-owned by the James Bond co-producer Benny Fisz and permanently full of actors, models and people hoping to be either. Chris was a fixture of that scene. He was reportedly offered the role of Bond himself, in the gap between Sean Connery and George Lazenby.</p>
-    </div>
-  </article>
+<section class="era era--club" style="--photo:url('images/chris-moore-portrait.jpg')">
+  <div class="wrap">
+    <p class="era__kicker">Jermyn Street, St James's</p>
+    <article class="entry">
+      <div class="entry__year">Early 60s</div>
+      <div>
+        <h3>The Crazy Elephant</h3>
+        <p>Before radio there was the Merchant Navy, where he worked as a steward — useful experience, as it turned out — and a spell in advertising. Then he started spinning records at the Crazy Elephant, a club on Jermyn Street part-owned by the film producer Benny Fisz and permanently full of actors, models and people hoping to be either. Chris was a fixture of that scene. He was reportedly offered the role of Bond himself, in the gap between Sean Connery and George Lazenby.</p>
+        <div class="aside">
+          <p>Some accounts put the Crazy Elephant on Curzon Street, perhaps confusing it with the White Elephant Club there. <i>TIME</i>, in March 1964, placed it in Jermyn Street: “come-one-come-all… where the beat is blue, the mood frenetic, and the Shake is the thing.”</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
 
-  <div class="wrap" style="padding-inline:0">
+<section class="era era--sea" style="--photo:url('images/mv-fredericia.jpg')">
+  <div class="wrap">
+    <p class="era__kicker">Three miles off Felixstowe</p>
+    <article class="entry">
+      <div class="entry__year">1964</div>
+      <div>
+        <h3>Three men, a ship and £250,000</h3>
+        <p>Chris knew Ronan O'Rahilly, who wanted to put a radio station on a boat. It was Chris who introduced him to Ian Ross, his flatmate in Chelsea, whose father became one of the station's principal backers and helped raise the quarter of a million pounds the venture needed. And it was Chris who organised the purchase of the ship itself — a Danish passenger ferry, the MV Fredericia, refitted with a transmitter and a tall mast and re-anchored in international water off Felixstowe.</p>
+        <p>At noon on Easter Saturday, 28 March 1964, his was the first voice on British offshore radio. The first record he played was the Rolling Stones' <i>Not Fade Away</i>, dedicated to Ronan.</p>
+        <div class="aside">
+          <p>Accounts of that first record differ — some tellings name a different Stones single, others a Beatles one. <i>Not Fade Away</i>, dedicated to O'Rahilly, is the version given by the Pirate Radio Hall of Fame. If you were listening that afternoon, we would very much like to hear from you.</p>
+        </div>
+      </div>
+    </article>
+    <figure class="shot shot--full">
+      <div class="frame">
+        <img src="images/mv-fredericia.jpg" alt="The MV Fredericia, the ship that became Radio Caroline" onerror="slotEmpty(this)">
+        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/mv-fredericia.jpg</code></span>
+      </div>
+      <figcaption>The MV Fredericia at anchor. Chris organised her purchase and conversion.<span class="credit">Photo credit: DWSav, via Wikimedia Commons (CC BY-SA 4.0)</span></figcaption>
+    </figure>
+    <article class="entry">
+      <div class="entry__year">1964–70</div>
+      <div>
+        <h3>Programme director</h3>
+        <p>He didn't stay at sea for long. The first full programme went to Simon Dee, and Chris moved ashore to become Caroline's first programme director. From there he hired the presenters — several of whom the BBC would later poach for the brand-new Radio 1, a station created largely to answer the pirates. He also spent years on the unglamorous work: keeping a station afloat, literally and financially, and keeping it outside territorial waters and beyond the reach of prosecution.</p>
+        <p>By 1967 Caroline had millions of listeners. In 1991 Chris told the story properly, at length, for the BBC documentary <i>A Pirate's Tale</i>. He is a member of the Pirate Radio Hall of Fame.</p>
+      </div>
+    </article>
     <figure class="shot shot--full">
       <div class="frame">
         <img src="images/caroline-studio.jpg" alt="The studio aboard the Radio Caroline ship" onerror="slotEmpty(this)">
@@ -384,47 +528,18 @@ footer li{margin-bottom:.5rem}
       <figcaption>The shipboard studio.<span class="credit">Photo credit: add here</span></figcaption>
     </figure>
   </div>
+</section>
 
-  <article class="entry">
-    <div class="entry__year">1964</div>
-    <div>
-      <h3>Three men, a ship and £250,000</h3>
-      <p>Chris knew Ronan O'Rahilly, who wanted to put a radio station on a boat. It was Chris who introduced him to Ian Ross, his flatmate in Chelsea, whose father became one of the station's principal backers and helped raise the quarter of a million pounds the venture needed. And it was Chris who organised the purchase of the ship itself — a Danish passenger ferry, the MV Fredericia, refitted with a transmitter and a tall mast and re-anchored in international water off Felixstowe.</p>
-      <p>At noon on Easter Saturday, 28 March 1964, his was the first voice on British offshore radio. The first record he played was the Rolling Stones' <i>Not Fade Away</i>, dedicated to Ronan.</p>
-      <div class="aside">
-        <p>Accounts of that first record differ — some tellings name a different Stones single, others a Beatles one. <i>Not Fade Away</i>, dedicated to O'Rahilly, is the version given by the Pirate Radio Hall of Fame. If you were listening that afternoon, we would very much like to hear from you.</p>
+<section class="era era--seventies" style="--photo:url('images/barcote.jpg')">
+  <div class="wrap">
+    <p class="era__kicker">Oxfordshire</p>
+    <article class="entry">
+      <div class="entry__year">Mid 70s</div>
+      <div>
+        <h3>Barcote Manor</h3>
+        <p>Worn down by the endless work of keeping Caroline going, Chris was visiting a girlfriend in rural Oxfordshire when he came across Barcote Manor: a gothic pile run as something between a household and a commune. He took a tiny room there and stayed for twenty years, painting and photographing prolifically and sending himself up while he did it. He shot pictures for the Museum of Modern Art in Oxford. When the owner sold up in the mid-nineties, he moved Chris — by then a close friend — into a small cottage nearby.</p>
       </div>
-    </div>
-  </article>
-
-  <div class="wrap" style="padding-inline:0">
-    <figure class="shot shot--full">
-      <div class="frame">
-        <img src="images/mv-fredericia.jpg" alt="The MV Fredericia, the ship that became Radio Caroline" onerror="slotEmpty(this)">
-        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/mv-fredericia.jpg</code></span>
-      </div>
-      <figcaption>The MV Fredericia at anchor. Chris organised her purchase and conversion.<span class="credit">Photo credit: DWSav, via Wikimedia Commons (CC BY-SA 4.0)</span></figcaption>
-    </figure>
-  </div>
-
-  <article class="entry">
-    <div class="entry__year">1964–70</div>
-    <div>
-      <h3>Programme director</h3>
-      <p>He didn't stay at sea for long. The first full programme went to Simon Dee, and Chris moved ashore to become Caroline's first programme director. From there he hired the presenters — several of whom the BBC would later poach for the brand-new Radio 1, a station created largely to answer the pirates. He also spent years on the unglamorous work: keeping a station afloat, literally and financially, and keeping it outside territorial waters and beyond the reach of prosecution.</p>
-      <p>By 1967 Caroline had millions of listeners. In 1991 Chris told the story properly, at length, for the BBC documentary <i>A Pirate's Tale</i>. He is a member of the Pirate Radio Hall of Fame.</p>
-    </div>
-  </article>
-
-  <article class="entry">
-    <div class="entry__year">Mid 70s</div>
-    <div>
-      <h3>Barcote Manor</h3>
-      <p>Worn down by the endless work of keeping Caroline going, Chris was visiting a girlfriend in rural Oxfordshire when he came across Barcote Manor: a gothic pile run as something between a household and a commune. He took a tiny room there and stayed for twenty years, painting and photographing prolifically and sending himself up while he did it. He shot pictures for the Museum of Modern Art in Oxford. When the owner sold up in the mid-nineties, he moved Chris — by then a close friend — into a small cottage nearby.</p>
-    </div>
-  </article>
-
-  <div class="wrap" style="padding-inline:0">
+    </article>
     <figure class="shot shot--full">
       <div class="frame">
         <img src="images/barcote.jpg" alt="Barcote Manor, Oxfordshire" onerror="slotEmpty(this)">
@@ -433,16 +548,18 @@ footer li{margin-bottom:.5rem}
       <figcaption>Barcote Manor, where Chris kept a small room and a large body of work.<span class="credit">Photo credit: Nigel Francis/Savills, via Cotswold Life</span></figcaption>
     </figure>
   </div>
+</section>
 
-  <article class="entry">
-    <div class="entry__year">Meanwhile</div>
-    <div>
-      <h3>A cave on La Gomera</h3>
-      <p>Years before it became a destination, Chris arrived at La Gomera in the Canaries by private boat and spent several months living in a cave near the Valle Gran Rey — the first outsider to do so, before the valley turned into a hippy retreat spoken of alongside Goa and Ibiza. He went back often during the Barcote years and took a stream of friends with him.</p>
-    </div>
-  </article>
-
-  <div class="wrap" style="padding-inline:0">
+<section class="era era--gomera" style="--photo:url('images/la-gomera.jpg')">
+  <div class="wrap">
+    <p class="era__kicker">Valle Gran Rey, the Canary Islands</p>
+    <article class="entry">
+      <div class="entry__year">Meanwhile</div>
+      <div>
+        <h3>A cave on La Gomera</h3>
+        <p>Years before it became a destination, Chris arrived at La Gomera in the Canaries by private boat and spent several months living in a cave near the Valle Gran Rey — the first outsider to do so, before the valley turned into a hippy retreat spoken of alongside Goa and Ibiza. He went back often during the Barcote years and took a stream of friends with him.</p>
+      </div>
+    </article>
     <figure class="shot shot--full">
       <div class="frame">
         <img src="images/la-gomera.jpg" alt="The terraced cliffs of Valle Gran Rey, La Gomera" onerror="slotEmpty(this)">
@@ -451,44 +568,52 @@ footer li{margin-bottom:.5rem}
       <figcaption>Valle Gran Rey, La Gomera, where Chris lived in a cave.<span class="credit">Photo credit: JVNavarro, via Wikimedia Commons (CC BY-SA 4.0)</span></figcaption>
     </figure>
   </div>
+</section>
 
-  <article class="entry">
-    <div class="entry__year">25 summers</div>
-    <div>
-      <h3>Caswell Bay</h3>
-      <p>He bought a rough wooden bungalow on the hillside above Caswell Bay on the Gower, and for the next quarter-century he spent his summers there: riding down each spring on an ex-police BMW motorbike, swimming, climbing back up the cliff, and keeping the rain out with inspired and precarious carpentry. Basic accommodation was his natural habitat — the rougher the better — and he occupied it as though it were a palace, holding court for whoever turned up.</p>
+<section class="era era--gower" style="--photo:url('images/caswell-bay.jpg')">
+  <div class="wrap">
+    <p class="era__kicker">The Gower, South Wales</p>
+    <article class="entry">
+      <div class="entry__year">25 summers</div>
+      <div>
+        <h3>Caswell Bay</h3>
+        <p>He bought a rough wooden bungalow on the hillside above Caswell Bay on the Gower, and for the next quarter-century he spent his summers there: riding down each spring on an ex-police BMW motorbike, swimming, climbing back up the cliff, and keeping the rain out with inspired and precarious carpentry. Basic accommodation was his natural habitat — the rougher the better — and he occupied it as though it were a palace, holding court for whoever turned up.</p>
+      </div>
+    </article>
+    <div class="pair">
+      <figure class="shot shot--half">
+        <div class="frame">
+          <img src="images/caswell-bay.jpg" alt="Caswell Bay on the Gower peninsula" onerror="slotEmpty(this)">
+          <span class="slot"><b>Photograph goes here</b>Save it as <code>images/caswell-bay.jpg</code></span>
+        </div>
+        <figcaption>Caswell Bay, twenty-five summers.<span class="credit">Photo credit: Tiia Monto, via Wikimedia Commons (CC BY-SA 3.0)</span></figcaption>
+      </figure>
+      <figure class="shot shot--half">
+        <div class="frame">
+          <img src="images/chris-later-years.jpg" alt="Chris Moore in later life" onerror="slotEmpty(this)">
+          <span class="slot"><b>Photograph goes here</b>Save it as <code>images/chris-later-years.jpg</code></span>
+        </div>
+        <figcaption>Later years.<span class="credit">Photo credit: add here</span></figcaption>
+      </figure>
     </div>
-  </article>
-
-  <div class="pair">
-    <figure class="shot shot--half">
-      <div class="frame">
-        <img src="images/caswell-bay.jpg" alt="Caswell Bay on the Gower peninsula" onerror="slotEmpty(this)">
-        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/caswell-bay.jpg</code></span>
-      </div>
-      <figcaption>Caswell Bay, twenty-five summers.<span class="credit">Photo credit: Tiia Monto, via Wikimedia Commons (CC BY-SA 3.0)</span></figcaption>
-    </figure>
-    <figure class="shot shot--half">
-      <div class="frame">
-        <img src="images/chris-later-years.jpg" alt="Chris Moore in later life" onerror="slotEmpty(this)">
-        <span class="slot"><b>Photograph goes here</b>Save it as <code>images/chris-later-years.jpg</code></span>
-      </div>
-      <figcaption>Later years.<span class="credit">Photo credit: add here</span></figcaption>
-    </figure>
   </div>
+</section>
 
-  <article class="entry">
-    <div class="entry__year">2021</div>
-    <div>
-      <h3>The last of it</h3>
-      <p>The trips to Wales stopped a couple of years before the end, as the floorboards gave out and the motorbike turned unreliable. Around the same time two women, Becka and Nay, moved in next door and became close friends, keeping an eye on him as he grew more sedentary and his health quietly declined. When Covid arrived they did his shopping. When his throat began troubling him in October 2020 they arranged his medical care and drove him to his appointments.</p>
-      <p>He was diagnosed with oesophageal cancer and died peacefully on 2 January 2021, aged eighty. He was cremated on the 22nd.</p>
-    </div>
-  </article>
+<section class="era era--dusk" style="--photo:url('images/chris-later-years.jpg')">
+  <div class="wrap">
+    <p class="era__kicker">Oxfordshire</p>
+    <article class="entry">
+      <div class="entry__year">2021</div>
+      <div>
+        <h3>The last of it</h3>
+        <p>The trips to Wales stopped a couple of years before the end, as the floorboards gave out and the motorbike turned unreliable. Around the same time two women, Becka and Nay, moved in next door and became close friends, keeping an eye on him as he grew more sedentary and his health quietly declined. When Covid arrived they did his shopping. When his throat began troubling him in October 2020 they arranged his medical care and drove him to his appointments.</p>
+        <p>He was diagnosed with oesophageal cancer and died peacefully on 2 January 2021, aged eighty. He was cremated on the 22nd.</p>
+      </div>
+    </article>
+  </div>
+</section>
 
-</div>
-
-<section class="band said" aria-labelledby="said-title">
+<section class="band band--pop said" aria-labelledby="said-title">
   <div class="wrap">
     <h2 id="said-title">What it meant</h2>
     <p class="said__intro">Chris helped put the ship in the water and spoke the first words from it. This is what the people who worked on it, and the people who listened, have said it did.</p>
@@ -529,7 +654,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="band band--sea">
+<section class="band band--radio" style="--photo:url('images/caroline-studio.jpg')">
   <div class="wrap listen">
     <h2>Hear him</h2>
     <p style="max-width:44ch">Recordings of Chris on air survive, collected by people who taped them off the radio sixty years ago and kept the reels.</p>
@@ -550,7 +675,7 @@ footer li{margin-bottom:.5rem}
   </div>
 </section>
 
-<section class="band" id="story-wall">
+<section class="band band--mail" id="story-wall">
   <div class="wrap">
     <div class="stories__head">
       <div>
@@ -627,6 +752,7 @@ footer li{margin-bottom:.5rem}
       <li><a href="https://en.wikipedia.org/wiki/Christopher_Moore_(DJ)">Christopher Moore (DJ)</a>, Wikipedia</li>
       <li><a href="https://www.independent.co.uk/arts-entertainment/films/features/the-swashbuckling-rock-rebels-of-radio-caroline-1647240.html">John Walsh on the rock rebels of Radio Caroline</a>, The Independent, 2009</li>
       <li><a href="https://en.wikipedia.org/wiki/Radio_Caroline">Radio Caroline</a>, Wikipedia</li>
+      <li><a href="https://time.com/archive/6873469/night-life-slipping-the-disque/">“Night Life: Slipping the Disque”</a>, <i>TIME</i>, 20 March 1964 — on the Crazy Elephant in Jermyn Street</li>
       <li>Quotes in “What it meant” are linked to their sources: <a href="https://www.irishpost.com/entertainment/pirate-radio-pioneers-story-comes-to-london-screen-307968">The Irish Post</a>, <a href="https://flashesandflames.com/2024/03/15/how-a-radio-ship-and-7-men-shook-up-britain-in-1964/">Flashes &amp; Flames</a>, <a href="https://abcnews.com/International/radio-caroline-britains-pirate-radio-station-broadcasting-sea/story?id=110204908">ABC News</a>, <a href="https://www.abc.net.au/news/2017-08-13/radio-caroline-reunite-50-years-after-broadcast-ship-shut-down/8801582">ABC News (Australia)</a> and the <a href="https://www.eadt.co.uk/news/24218361.tony-blackburn-celebrates-radio-caroline-bbc-radio-2/">East Anglian Daily Times</a></li>
     </ul>
     <p>Corrections and photographs are welcome — this page will only get better with them. Write to <a href="mailto:stories@example.com">stories@example.com</a>.</p>
